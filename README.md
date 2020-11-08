@@ -42,8 +42,8 @@ Java实验（四）
 核心代码
 ```
 public interface Jiekou {
-	public abstract void pay();
-	public abstract void check();
+    public abstract void pay();
+    public abstract void check();
 }
 接口代码，访问修饰符一定要是public。
 ```
@@ -55,123 +55,121 @@ Scanner sc1 = new Scanner(System.in);
 ```
 
 ```
-void jianru()
-	{
-		try {
-		    System.out.println("信息依次为：名字 性别 年龄 学费 薪水");
-		    name = sc.nextLine();
-		    sex = sc.nextLine();
-		    age = sc.nextInt();
-		    cost6 = sc.nextInt();
-		    earn1 = sc.nextInt();
-		    cost = 2*cost6;
-		    earn = 12*earn1;
-		}catch(Exception e) {
-			System.out.print("请输入正确的信息！！！");
-		}
+void jianru() {
+    try {
+	System.out.println("信息依次为：名字 性别 年龄 学费 薪水");
+	name = sc.nextLine();
+	sex = sc.nextLine();
+	age = sc.nextInt();
+	cost6 = sc.nextInt();
+	earn1 = sc.nextInt();
+	cost = 2*cost6;
+	earn = 12*earn1;
+	}catch(Exception e) {
+	    System.out.print("请输入正确的信息！！！");
 	}
+}
 键入函数：将键入的信息放到对应的位置。
 try-catch报错语句：当用户键入了错误类型的信息时（如在月薪处键入中文），停止程序运行并报错。
 ```
 
 ```
 public void pay() {
-		if(sex.equals("男")) {
-			System.out.println("欢迎"+name+"先生进入学校缴费系统");
-			if(shifoujiaofei.equals("否")) {
-				System.out.println("当前您尚未进行缴费，请在学期开始前完成缴费！");
-			}else {
-				System.out.println("你已成功缴费，祝您生活愉快！");
-			}
-		}else {
-			System.out.println("欢迎"+name+"女士进入学校缴费系统");
-			if(shifoujiaofei.equals("否")) {
-				System.out.println("当前您尚未进行缴费，请在学期开始前完成缴费！");
-			}else {
-				System.out.println("你已成功缴费，祝您生活愉快！");
-			}
-		}
-		System.out.println("缴费请输入1，退出请输入9");
-		int jianru = sc.nextInt();
-		if(jianru == 1) {
-			if(money < cost6) {
-				System.out.println("缴费失败，您的余额不足！");
-			}else {
-				shifoujiaofei = "是";
-				money -= cost6;
-				System.out.println("缴费成功，当前余额为："+money+"，祝您生活愉快！");
-			}
+    if(sex.equals("男")) {
+	System.out.println("欢迎"+name+"先生进入学校缴费系统");
+	if(shifoujiaofei.equals("否")) {
+	System.out.println("当前您尚未进行缴费，请在学期开始前完成缴费！");
+	}else {
+	    System.out.println("你已成功缴费，祝您生活愉快！");
+	}
+	}else {
+	    System.out.println("欢迎"+name+"女士进入学校缴费系统");
+	    if(shifoujiaofei.equals("否")) {
+	    System.out.println("当前您尚未进行缴费，请在学期开始前完成缴费！");
+	}else {
+	    System.out.println("你已成功缴费，祝您生活愉快！");
+	}
+	}
+	System.out.println("缴费请输入1，退出请输入9");
+	int jianru = sc.nextInt();
+	if(jianru == 1) {
+	    if(money < cost6) {
+		System.out.println("缴费失败，您的余额不足！");
+	    }else {
+		shifoujiaofei = "是";
+		money -= cost6;
+		System.out.println("缴费成功，当前余额为："+money+"，祝您生活愉快！");
 		}
 	}
+}
 缴费函数：可判断是先生还是女士，并判断是否进行了缴费，后面三个函数类似，但并没有判断性别方法。
 ```
 
 ```
-		final double a = 0.03;
-		final double b = 0.1;
-		final double c = 0.2;
-		final double d = 0.25;
-		final double e = 0.3;
-		final double f = 0.35;
-		final double g = 0.45;
+final double a = 0.03;
+final double b = 0.1;
+final double c = 0.2;
+final double d = 0.25;
+final double e = 0.3;
+final double f = 0.35;
+final double g = 0.45;
 用final方法定义固定的税率。
 ```
 
 ```
-		System.out.println("请输入第一位博士的信息");
-		doctor01.jianru();
-		System.out.println("请输入第二位博士的信息");
-		doctor02.jianru();
+System.out.println("请输入第一位博士的信息");
+doctor01.jianru();
+System.out.println("请输入第二位博士的信息");
+doctor02.jianru();
 调用jianru()函数
 ```
 
 ```
-		if(xunhuan == 1) {
-				while(true) {
-					System.out.println("请输入您的名字");
-					mingzi = sc1.nextLine();
-					
-					if (mingzi.equals(doctor01.name)) {
-						doctor01.pay();
-						break;
-					}
-					if (mingzi.equals(doctor02.name)) {
-						doctor02.pay();
-						break;
-					}
-				}
-			}
+if(xunhuan == 1) {
+    while(true) {
+	System.out.println("请输入您的名字");
+        mingzi = sc1.nextLine();			
+	if (mingzi.equals(doctor01.name)) {
+        doctor01.pay();
+	break;
+	}
+	if (mingzi.equals(doctor02.name)) {
+		doctor02.pay();
+		break;
+		}
+	}
+}
 判断用户键入的数字，进入相应的操作（函数），后三个与之相似。
 ```
 
 ```
-				if(doctor01.earn - doctor01.cost > 0 && doctor01.earn - doctor01.cost <= 5000) {
-					doctor01.tax = 0;
-					System.out.println("您需要缴纳的纳税额为："+doctor01.tax);
-				}else if(doctor01.earn - doctor01.cost > 5000 && doctor01.earn - doctor01.cost <= 8000) {
-					doctor01.tax = a*(doctor01.earn - doctor01.cost - 5000);
-					System.out.println("您需要缴纳的纳税额为："+doctor01.tax);
-				}else if(doctor01.earn - doctor01.cost > 8000 && doctor01.earn - doctor01.cost <= 17000) {
-					doctor01.tax = 90 + b*(doctor01.earn - doctor01.cost - 8000);
-					System.out.println("您需要缴纳的纳税额为："+doctor01.tax);
-				}else if(doctor01.earn - doctor01.cost > 17000 && doctor01.earn - doctor01.cost <= 30000) {
-					doctor01.tax = 90 + 900 + c*(doctor01.earn - doctor01.cost - 17000);
-					System.out.println("您需要缴纳的纳税额为："+doctor01.tax);
-				}else if(doctor01.earn - doctor01.cost > 30000 && doctor01.earn - doctor01.cost <= 40000) {
-					doctor01.tax = 90 + 900 + 2600 + d*(doctor01.earn - doctor01.cost - 30000);
-					System.out.println("您需要缴纳的纳税额为："+doctor01.tax);
-				}else if(doctor01.earn - doctor01.cost > 40000 && doctor01.earn - doctor01.cost <= 60000) {
-					doctor01.tax = 90 + 900 + 2600 + 2500 + e*(doctor01.earn - doctor01.cost - 40000);
-					System.out.println("您需要缴纳的纳税额为："+doctor01.tax);
-				}else if(doctor01.earn - doctor01.cost > 60000 && doctor01.earn - doctor01.cost <= 85000) {
-					doctor01.tax = 90 + 900 + 2600 + 2500 + 6000 + f*(doctor01.earn - doctor01.cost - 60000);
-					System.out.println("您需要缴纳的纳税额为："+doctor01.tax);
-				}else if(doctor01.earn - doctor01.cost > 85000) {
-					doctor01.tax = 90 + 900 + 2600 + 2500 + 6000 + 8750 + g*(doctor01.earn - doctor01.cost - 60000);
-					System.out.println("您需要缴纳的纳税额为："+doctor01.tax);
-				}else {
-					System.out.println("当薪水低于学费时，您不用缴纳税款！");
-				}
+if(doctor01.earn - doctor01.cost > 0 && doctor01.earn - doctor01.cost <= 5000) {
+	doctor01.tax = 0;
+	System.out.println("您需要缴纳的纳税额为："+doctor01.tax);
+}else if(doctor01.earn - doctor01.cost > 5000 && doctor01.earn - doctor01.cost <= 8000) {
+	doctor01.tax = a*(doctor01.earn - doctor01.cost - 5000);
+	System.out.println("您需要缴纳的纳税额为："+doctor01.tax);
+}else if(doctor01.earn - doctor01.cost > 8000 && doctor01.earn - doctor01.cost <= 17000) {
+	doctor01.tax = 90 + b*(doctor01.earn - doctor01.cost - 8000);
+	System.out.println("您需要缴纳的纳税额为："+doctor01.tax);
+}else if(doctor01.earn - doctor01.cost > 17000 && doctor01.earn - doctor01.cost <= 30000) {
+	doctor01.tax = 90 + 900 + c*(doctor01.earn - doctor01.cost - 17000);
+	System.out.println("您需要缴纳的纳税额为："+doctor01.tax);
+}else if(doctor01.earn - doctor01.cost > 30000 && doctor01.earn - doctor01.cost <= 40000) {
+	doctor01.tax = 90 + 900 + 2600 + d*(doctor01.earn - doctor01.cost - 30000);
+	System.out.println("您需要缴纳的纳税额为："+doctor01.tax);
+}else if(doctor01.earn - doctor01.cost > 40000 && doctor01.earn - doctor01.cost <= 60000) {
+	doctor01.tax = 90 + 900 + 2600 + 2500 + e*(doctor01.earn - doctor01.cost - 40000);
+	System.out.println("您需要缴纳的纳税额为："+doctor01.tax);
+}else if(doctor01.earn - doctor01.cost > 60000 && doctor01.earn - doctor01.cost <= 85000) {
+	doctor01.tax = 90 + 900 + 2600 + 2500 + 6000 + f*(doctor01.earn - doctor01.cost - 60000);
+	System.out.println("您需要缴纳的纳税额为："+doctor01.tax);
+}else if(doctor01.earn - doctor01.cost > 85000) {
+	doctor01.tax = 90 + 900 + 2600 + 2500 + 6000 + 8750 + g*(doctor01.earn - doctor01.cost - 60000);
+	System.out.println("您需要缴纳的纳税额为："+doctor01.tax);
+}else {
+	System.out.println("当薪水低于学费时，您不用缴纳税款！");
+}
 计算纳税额。
 ```
 
